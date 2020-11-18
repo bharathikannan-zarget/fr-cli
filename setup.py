@@ -22,5 +22,6 @@ setuptools.setup(
 		"Operating System:: Os Independent",
 	],
 	scripts=['bin/fr-cli'],
+        install_requires=install_requires,
 	python_requires='>=3.6'
 )
