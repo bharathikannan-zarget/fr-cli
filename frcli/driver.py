@@ -12,6 +12,7 @@ import json
 import urllib.parse
 import sys
 import textwrap
+import traceback
 
 def save_config(options):
 	config = configparser.ConfigParser()
@@ -199,11 +200,11 @@ def transform_issue_response(response):
 			issue_json["squad"] = sub_projects.get(issue_json.get("sub_project_id"), issue_json.get("sub_project_id"))
 			del issue_json["sub_project_id"]
 
-		if "description" in issue_json and is_valid(issue["description"]):
-			issue["description"] = wrap(issue["description"])
+		if "description" in issue_json and is_valid(issue_json["description"]):
+			issue_json["description"] = wrap(issue_json["description"])
 
-		if "title" in issue_json and is_valid(issue["title"]):
-			issue["title"] = wrap(issue["title"])
+		if "title" in issue_json and is_valid(issue_json["title"]):
+			issue_json["title"] = wrap(issue_json["title"])
 
 	if "issue" in response:
 		change_fields(response["issue"])
